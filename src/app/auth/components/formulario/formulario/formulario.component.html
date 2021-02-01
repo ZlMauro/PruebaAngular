@@ -1,0 +1,143 @@
+<div class="row">
+  <div class="col-md-6 mx-auto mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-center">Registre Sus Datos Personales</h1>
+
+        <form (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
+          <input type="hidden" formControlName="id">
+          <div class="form-group">
+            <label for="name">Nombre Completo</label>
+            <input type="text" class="form-control" formControlName="name" />
+          </div>
+
+          <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div class="container-error-message" *ngIf="name.errors.required">Nombre Requerido</div>
+            <div class="container-error-message" *ngIf="name.errors.minlength">Debe Escribir su nombre
+              completo</div>
+          </div>
+
+          <div class="form-group">
+            <label for="cc">Numero Identificación</label>
+            <input type="text" class="form-control" formControlName="cc" />
+          </div>
+
+          <div class="alert-danger" *ngIf="cc.invalid && (cc.dirty || cc.touched)">
+            <div class="container-error-message" *ngIf="cc.errors.required">Identificación Requerida</div>
+            <div class="container-error-message" *ngIf="cc.errors.minlength">Minimo 10 caracteres</div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="tel">Celular</label>
+            <input type="text" class="form-control" formControlName="tel" />
+          </div>
+
+          <div class="alert-danger" *ngIf="tel.invalid && (tel.dirty || tel.touched)">
+            <div class="container-error-message" *ngIf="tel.errors.required">Celular Requerido</div>
+            <div class="container-error-message" *ngIf="tel.errors.minlength">Minimo 10 caracteres</div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="email">Correo</label>
+            <input type="email" class="form-control" formControlName="email" id="txt_email" />
+          </div>
+          <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div class="container-error-message" *ngIf="email.errors.required">
+              Email es requerido
+            </div>
+            <div class="container-error-message" *ngIf="email.errors.minlength">
+              Minimo 5 caracteres
+            </div>
+            <div class="container-error-message"
+              *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">
+              Correo invalido
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Confirmar Correo</label>
+            <input type="email" class="form-control" formControlName="confiremail" />
+          </div>
+          <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div class="container-error-message" *ngIf="email.errors.required">
+              Email es requerido
+            </div>
+            <div class="container-error-message" *ngIf="email.errors.minlength">
+              Minimo 5 caracteres
+            </div>
+            <div class="container-error-message"
+              *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">
+              Correo invalido
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" formControlName="password" />
+          </div>
+
+          <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div class="container-error-message" *ngIf="password.errors.required">password Requerido</div>
+            <div class="container-error-message" *ngIf="password.errors.minlength">Minimo 6 caracteres
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirpassword">Confimar Contraseña</label>
+            <input type="password" class="form-control" formControlName="confirpassword" />
+          </div>
+
+          <div class="alert-danger" *ngIf="confirpassword.invalid && (confirpassword.dirty || confirpassword.touched)">
+            <div class="container-error-message" *ngIf="confirpassword.errors.required">password Requerido
+            </div>
+            <div class="container-error-message" *ngIf="confirpassword.errors.minlength">Minimo 10
+              caracteres
+
+            </div>
+          </div>
+         
+          <p class="alert-danger"  *ngIf="formsubmit==true">*Los correos no son iguales*</p>
+          <p class="alert-danger"  *ngIf="formpassword==true">*Los contraseñas no son iguales*</p>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!newUserForm.valid">
+            Registrarse
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1 class="text-center">Usuarios Registrados</h1>
+
+<table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Identificación</th>
+      <th scope="col">Celular</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let dato of arreglousers">
+      <th>{{dato.data.name}}</th>
+      <td>{{dato.data.cc}}</td>
+      <td>{{dato.data.tel}}</td>
+      <td>{{dato.data.email}}</td>
+      <td>{{dato.data.password}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+     
+      
+  
+
+

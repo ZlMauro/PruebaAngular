@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "proyectoag-d6f5e": {
+      "hosting": {
+        "ProyectoAngular": [
+          "proyectoag-d6f5e"
+        ]
+      }
+    }
+  }
+}
